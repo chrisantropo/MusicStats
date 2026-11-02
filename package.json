@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npm install --no-audit --no-fund && npm run build && node -e \"const fs=require('fs');fs.mkdirSync('tmp',{recursive:true});fs.closeSync(fs.openSync('tmp/restart.txt','w'));\""
   },
   "dependencies": {
     "lucide-react": "^0.454.0",

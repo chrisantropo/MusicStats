@@ -29,6 +29,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# plesk passenger restart trigger
+/tmp/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
