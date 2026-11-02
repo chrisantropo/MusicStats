@@ -56,10 +56,10 @@ export default function WrappedStoryModal({
   const topTrack = metrics.topTracks[0];
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
-      <div className="relative w-full max-w-[420px] h-[740px] rounded-[36px] overflow-hidden shadow-2xl border border-white/15 flex flex-col justify-between select-none">
+    <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-3 sm:p-4">
+      <div className="relative w-full max-w-[420px] h-[min(740px,92vh)] rounded-[36px] overflow-hidden shadow-2xl border border-white/15 flex flex-col justify-between select-none">
         {/* Progress Bars */}
-        <div className="absolute top-4 inset-x-5 z-20 flex gap-1.5">
+        <div className=" shrink-0 pt-4 px-5 z-20 flex gap-1.5">
           {Array.from({ length: totalSlides }).map((_, idx) => (
             <div
               key={idx}
@@ -79,7 +79,7 @@ export default function WrappedStoryModal({
         </div>
 
         {/* Top Bar */}
-        <div className="relative z-20 pt-9 px-6 flex items-center justify-between">
+        <div className="relative z-20 shrink-0 pt-3 px-6 flex items-center justify-between">
           <span className="text-xs font-bold uppercase tracking-widest text-white/80 flex items-center gap-1.5">
             <Volume2 className="w-4 h-4 text-emerald-400" />
             Spotify Wrapped · {yearLabel}
@@ -93,23 +93,23 @@ export default function WrappedStoryModal({
         </div>
 
         {/* Slide Content */}
-        <div className="relative z-10 flex-1 flex flex-col justify-center px-8 text-white">
+        <div className="relative z-10 flex-1 min-h-0 overflow-y-auto flex flex-col justify-center px-6 sm:px-7 py-2 text-white">
           {slide === 0 && (
-            <div className="space-y-6 animate-fadeIn">
-              <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400">
-                <Clock className="w-9 h-9" />
+            <div className="space-y-5 animate-fadeIn">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400">
+                <Clock className="w-8 h-8" />
               </div>
               <p className="text-sm font-bold uppercase tracking-widest text-emerald-400">
                 La banda sonora de tu vida
               </p>
-              <h2 className="text-4xl font-black leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-black leading-tight">
                 Has escuchado{" "}
                 <span className="text-emerald-400">
                   {metrics.totalMinutes.toLocaleString()}
                 </span>{" "}
                 minutos de música.
               </h2>
-              <p className="text-base text-white/80 leading-relaxed">
+              <p className="text-sm sm:text-base text-white/80 leading-relaxed">
                 Eso equivale a{" "}
                 <strong className="text-white">
                   {metrics.totalHours.toLocaleString()} horas
@@ -134,7 +134,7 @@ export default function WrappedStoryModal({
           )}
 
           {slide === 1 && topArtist && (
-            <div className="space-y-5 animate-fadeIn">
+            <div className="space-y-4 animate-fadeIn">
               <div className="flex items-center gap-4">
                 <ArtworkThumb
                   artistName={topArtist.artistName}
@@ -150,7 +150,7 @@ export default function WrappedStoryModal({
               <p className="text-sm font-bold uppercase tracking-widest text-fuchsia-300">
                 Tu Artista #1
               </p>
-              <h2 className="text-4xl font-black tracking-tight leading-none text-white">
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight leading-none text-white">
                 {topArtist.artistName}
               </h2>
               <p className="text-sm text-white/80">
@@ -162,11 +162,11 @@ export default function WrappedStoryModal({
                 juntos ({topArtist.playCount.toLocaleString()} reproducciones y{" "}
                 {topArtist.uniqueTracks} canciones distintas).
               </p>
-              <div className="p-4 rounded-2xl bg-white/10 border border-white/10">
+              <div className="p-3.5 rounded-2xl bg-white/10 border border-white/10">
                 <p className="text-xs text-white/60 uppercase font-semibold">
                   Tu tema favorito suyo (Pulsa la portada para oír)
                 </p>
-                <p className="text-lg font-bold text-white mt-0.5">
+                <p className="text-base font-bold text-white mt-0.5 truncate">
                   “{topArtist.topTrack}”
                 </p>
               </div>
@@ -174,7 +174,7 @@ export default function WrappedStoryModal({
           )}
 
           {slide === 2 && topTrack && (
-            <div className="space-y-5 animate-fadeIn">
+            <div className="space-y-4 animate-fadeIn">
               <div className="flex items-center gap-4">
                 <ArtworkThumb
                   artistName={topTrack.artistName}
@@ -190,21 +190,21 @@ export default function WrappedStoryModal({
               <p className="text-sm font-bold uppercase tracking-widest text-amber-300">
                 En bucle infinito
               </p>
-              <h2 className="text-3xl font-black leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-black leading-tight line-clamp-2">
                 “{topTrack.trackName}”
               </h2>
-              <p className="text-base font-semibold text-white/80">
+              <p className="text-sm sm:text-base font-semibold text-white/80 truncate">
                 de {topTrack.artistName} ·{" "}
                 <span className="text-white/60">{topTrack.albumName}</span>
               </p>
               <div className="grid grid-cols-2 gap-3 pt-1">
-                <div className="p-4 rounded-2xl bg-white/10 border border-white/10">
+                <div className="p-3.5 rounded-2xl bg-white/10 border border-white/10">
                   <p className="text-xs text-white/60 uppercase">Veces</p>
                   <p className="text-2xl font-black text-amber-300">
                     {topTrack.playCount}x
                   </p>
                 </div>
-                <div className="p-4 rounded-2xl bg-white/10 border border-white/10">
+                <div className="p-3.5 rounded-2xl bg-white/10 border border-white/10">
                   <p className="text-xs text-white/60 uppercase">Minutos</p>
                   <p className="text-2xl font-black text-amber-300">
                     {Math.round(topTrack.totalMs / 60000)}m
@@ -215,9 +215,9 @@ export default function WrappedStoryModal({
           )}
 
           {slide === 3 && (
-            <div className="space-y-6 animate-fadeIn">
-              <div className="w-16 h-16 rounded-2xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center text-cyan-300">
-                <Flame className="w-9 h-9" />
+            <div className="space-y-5 animate-fadeIn">
+              <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center text-cyan-300">
+                <Flame className="w-8 h-8" />
               </div>
               <p className="text-sm font-bold uppercase tracking-widest text-cyan-300">
                 Tu Personalidad Musical
@@ -242,16 +242,18 @@ export default function WrappedStoryModal({
           )}
 
           {slide === 4 && (
-            <div className="space-y-4 animate-fadeIn">
-              <p className="text-xs font-bold uppercase tracking-widest text-emerald-400">
-                Resumen Final · {yearLabel}
-              </p>
-              <h2 className="text-3xl font-black text-white">
-                Tu Pódium Musical
-              </h2>
+            <div className="space-y-2.5 animate-fadeIn">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-emerald-400">
+                  Resumen Final · {yearLabel}
+                </p>
+                <h2 className="text-2xl font-black text-white leading-tight">
+                  Tu Pódium Musical
+                </h2>
+              </div>
 
-              <div className="space-y-2 bg-white/10 p-3.5 rounded-2xl border border-white/10">
-                <p className="text-xs font-bold uppercase text-emerald-400">
+              <div className="space-y-1.5 bg-white/10 p-3 rounded-2xl border border-white/10">
+                <p className="text-[11px] font-bold uppercase text-emerald-400 mb-1">
                   Top 5 Artistas
                 </p>
                 {metrics.topArtists.slice(0, 5).map((a, i) => (
@@ -263,7 +265,7 @@ export default function WrappedStoryModal({
                       <ArtworkThumb
                         artistName={a.artistName}
                         trackName={a.topTrack}
-                        size="sm"
+                        size="xs"
                         rounded="md"
                         enablePreview={false}
                       />
@@ -278,8 +280,8 @@ export default function WrappedStoryModal({
                 ))}
               </div>
 
-              <div className="space-y-2 bg-white/10 p-3.5 rounded-2xl border border-white/10">
-                <p className="text-xs font-bold uppercase text-emerald-400">
+              <div className="space-y-1.5 bg-white/10 p-3 rounded-2xl border border-white/10">
+                <p className="text-[11px] font-bold uppercase text-emerald-400 mb-1">
                   Top 5 Canciones
                 </p>
                 {metrics.topTracks.slice(0, 5).map((t, i) => (
@@ -291,7 +293,7 @@ export default function WrappedStoryModal({
                       <ArtworkThumb
                         artistName={t.artistName}
                         trackName={t.trackName}
-                        size="sm"
+                        size="xs"
                         rounded="md"
                         enablePreview={false}
                       />
@@ -327,11 +329,11 @@ export default function WrappedStoryModal({
         />
 
         {/* Navigation Controls */}
-        <div className="relative z-20 p-6 flex items-center justify-between">
+        <div className="relative z-20 shrink-0 px-6 py-4 flex items-center justify-between">
           <button
             onClick={prevSlide}
             disabled={slide === 0}
-            className="p-3 rounded-full bg-white/10 hover:bg-white/20 disabled:opacity-30 text-white transition"
+            className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 disabled:opacity-30 text-white transition"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -340,7 +342,7 @@ export default function WrappedStoryModal({
           </span>
           <button
             onClick={nextSlide}
-            className="px-5 py-2.5 rounded-full bg-white text-black font-bold text-xs hover:bg-zinc-200 transition flex items-center gap-1"
+            className="px-5 py-2.5 rounded-full bg-white text-black font-bold text-xs hover:bg-zinc-200 transition flex items-center gap-1 shadow-lg"
           >
             {slide === totalSlides - 1 ? "Finalizar" : "Siguiente"}
             <ChevronRight className="w-4 h-4" />

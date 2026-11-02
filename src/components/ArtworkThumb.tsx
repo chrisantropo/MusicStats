@@ -26,7 +26,7 @@ export function stopGlobalAudioPreview() {
 interface ArtworkThumbProps {
   artistName: string;
   trackName?: string;
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
   rounded?: "md" | "xl" | "full";
   enablePreview?: boolean;
   className?: string;
@@ -106,6 +106,7 @@ export default function ArtworkThumb({
   };
 
   const sizeClasses = {
+    xs: "w-7 h-7",
     sm: "w-9 h-9",
     md: "w-11 h-11",
     lg: "w-16 h-16",
