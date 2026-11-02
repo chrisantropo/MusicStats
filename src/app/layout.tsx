@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: "MusicStats Wrapped — Tus Estadísticas de Spotify (RGPD)",
   description:
     "Analiza tu historial completo de Spotify (StreamingHistory / endsong.json) con privacidad 100% en tu navegador y genera tarjetas Wrapped compartibles.",
+  icons: {
+    icon: "/MusicStats.svg",
+    shortcut: "/MusicStats.svg",
+    apple: "/MusicStats.svg",
+  },
 };
 
 export default function RootLayout({
@@ -20,4 +25,3 @@ export default function RootLayout({
     </html>
   );
 }
-
