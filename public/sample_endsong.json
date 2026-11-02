@@ -1,0 +1,43 @@
+[
+  {
+    "ts": "2026-03-14T18:22:10Z",
+    "master_metadata_track_name": "Tití Me Preguntó",
+    "master_metadata_album_artist_name": "Bad Bunny",
+    "master_metadata_album_album_name": "Un Verano Sin Ti",
+    "ms_played": 243000,
+    "reason_end": "trackdone",
+    "shuffle": false,
+    "skipped": false
+  },
+  {
+    "ts": "2026-03-14T18:26:15Z",
+    "master_metadata_track_name": "Blinding Lights",
+    "master_metadata_album_artist_name": "The Weeknd",
+    "master_metadata_album_album_name": "After Hours",
+    "ms_played": 200000,
+    "reason_end": "trackdone",
+    "shuffle": true,
+    "skipped": false
+  },
+  {
+    "ts": "2026-03-14T18:29:50Z",
+    "master_metadata_track_name": "Instant Crush (feat. Julian Casablancas)",
+    "master_metadata_album_artist_name": "Daft Punk",
+    "master_metadata_album_album_name": "Random Access Memories",
+    "ms_played": 337000,
+    "reason_end": "trackdone",
+    "shuffle": true,
+    "skipped": false
+  },
+  {
+    "ts": "2026-03-14T18:30:12Z",
+    "master_metadata_track_name": "DESPECHÁ",
+    "master_metadata_album_artist_name": "Rosalía",
+    "master_metadata_album_album_name": "MOTOMAMI",
+    "ms_played": 14000,
+    "reason_end": "fwdbtn",
+    "shuffle": true,
+    "skipped": true
+  }
+]
+
