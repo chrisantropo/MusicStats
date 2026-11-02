@@ -67,3 +67,4 @@ Abre `http://localhost:3000` en tu navegador.
 - **Estilos**: [Tailwind CSS](https://tailwindcss.com/) + Lucide Icons
 - **Procesamiento Local**: `JSZip` (descompresión en memoria) + `idb-keyval` (`IndexedDB`)
 - **Generación Gráfica**: HTML5 Canvas API (`1080x1920` Stories HD)
+

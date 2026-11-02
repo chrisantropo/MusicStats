@@ -1,21 +1,24 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -e
 
-# Add Plesk Node.js binaries to PATH automatically (supports Node 18, 20, 22, 24, 26)
-for dir in /opt/plesk/node/*/bin; do
-  if [ -d "$dir" ]; then
+# Try to run npm build if available outside chroot; otherwise use pre-built 'out/' from git
+for dir in /opt/plesk/node/*/bin "$HOME/.nvm/versions/node"/*/bin /usr/local/bin /usr/bin; do
+  if [ -x "$dir/npm" ]; then
     export PATH="$dir:$PATH"
+    break
   fi
 done
 
-echo "Installing dependencies..."
-npm install --no-audit --no-fund
+if command -v npm >/dev/null 2>&1; then
+  echo "NPM found, building fresh bundle..."
+  npm install --no-audit --no-fund
+  npm run build
+else
+  echo "Running in Plesk chrooted Git shell (no npm in chroot). Using pre-built 'out/' bundle from repository."
+fi
 
-echo "Building Next.js application..."
-npm run build
-
-echo "Restarting Phusion Passenger / Plesk Node.js app..."
+# Copy static export to root if needed and trigger Passenger restart
 mkdir -p tmp
 touch tmp/restart.txt
 
-echo "Deploy completed successfully!"
+echo "Deploy & restart completed successfully!"
